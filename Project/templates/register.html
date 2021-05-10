@@ -3,17 +3,63 @@
     Register - Page
 {% endblock %}
 
+
+{% block css %}
+
+<link rel="stylesheet" href= "{{ url_for('static',filename='fonts/material-icon/css/material-design-iconic-font.min.css') }}" >
+<link rel="stylesheet" href= "{{ url_for('static',filename='/css/style1.css') }}">
+
+
+
+{% endblock %}
+
 {% block content %}
 
+<div class="main">
 
-    <h1> Register</h1>
-    <form  method="POST">
-        <input name="newusername" placeholder="name">
-        <br>
-        <input name="newpassword" placeholder="PWD">
-        <br>
-        <input type="submit">
-    </form>
+    <section class="signup">
+       
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form">
+                    <h2 class="form-title">Create account</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="newusername" id="name" placeholder="Your Name"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="newpassword" id="password" placeholder="Password"/>
+                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password"/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                    </div>
+                </form>
+                <p class="loginhere">
+                    Have already an account ? <a href="/login" class="loginhere-link">Login here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+
+ 
 
 
     {% endblock %}
+
+    {% block script %}
+
+    <script src="{{ url_for('static',filename='/vendor/jquery/jquery.min.js') }}" ></script>
+    <script src=  "{{ url_for('static',filename='js/main1.js') }}" ></script>
+     
+     {% endblock %}
