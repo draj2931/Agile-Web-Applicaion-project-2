@@ -1,5 +1,5 @@
 from Project import app
-from flask import render_template,request
+from flask import render_template,request,flash
 from Project import models
 
 @app.route('/')
@@ -16,10 +16,12 @@ def checklogin():
     usr = request.form['username']
     pwd = request.form['password']
 
+
     
     attempted_user= models.users.query.filter_by(username=usr).first()
     print(attempted_user)
     if attempted_user is None :
+        
         return render_template("error.html")
     elif attempted_user.username == usr and attempted_user.password == pwd :
         return render_template('user.html',value=usr)
@@ -31,9 +33,12 @@ def register():
     if request.method == "POST":
         nusr=request.form['newusername']
         npwd=request.form['newpassword']
+        ncpwd=request.form['re_password']
+        email=request.form['email']
+
         
 
-        usrdetail=models.users(username=nusr,password=npwd)
+        usrdetail=models.users(username=nusr,emailid=email,password=npwd,confirm_password=ncpwd)
         models.db.session.add(usrdetail)
         models.db.session.commit()
     
