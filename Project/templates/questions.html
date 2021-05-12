@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% block heading %}
+<li class="nav-item active">
+    <div class="heading1" style="margin-left:150px; width:450px;" >
+    <a class="nav-link" style="color:white"> AGILE METHODOLOGY</a>
+  </div>
+</li>
+{% endblock %}
+{% block icon %}
+<img src="{{ url_for('static',filename='/images/signup.png') }}" alt="Image" style="width:50px;height:50px; margin-top:-20px" class="img-fluid">
+
+{%endblock%}
+
+{% block login %} 
+Logout
+{% endblock%}
+
+{% block register %}
+
+{{value1}}
+
+{% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/material_style.css') }}">
+
+
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="wrapper">
+  
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>ASSESMENT</h3>
+        
+      </div>
+  
+      <ul class="list-unstyled components">
+        <p>QUESTION NO </p>
+        <li >
+          <a href="#tab1" data-toggle="tab">QUESTION 1</a>
+
+          <a href="#tab2" data-toggle="tab" >QUESTION 2</a>
+
+          <a href="#tab3"  data-toggle="tab">QUESTION 3</a>
+
+          <a href="#tab1" data-toggle="tab">QUESTION 4</a>
+
+          <a href="#tab2" data-toggle="tab" >QUESTION 5</a>
+
+          <a href="#tab1" data-toggle="tab">QUESTION 6</a>
+
+          <a href="#tab2" data-toggle="tab" >QUESTION 7</a>
+
+          <a href="#tab3"  data-toggle="tab">QUESTION 8</a>
+
+          <a href="#tab1" data-toggle="tab">QUESTION 9</a>
+
+          <a href="#tab2" data-toggle="tab" >QUESTION 10</a>
+
+         
+
+         
+        </li>
+       
+      </ul>
+  
+     
+    </nav>
+  
+    <!-- Page Content Holder -->
+    <div id="content">
+            <button type="button" id="sidebarCollapse">
+                <img src="{{ url_for('static',filename='images/sidbar.png') }}" alt="Image" style="width:50px;height:50px;">
+              
+            </button>
+     </div>
+      
+
+</div>
+<div class="content-display">
+<div class="header-title">
+  ASSESMENT
+  
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-lg-12">
+     <div class="card text-center my-4">
+       <!-- navigation in .card-header -->
+      
+       <!-- .card-body.tab-content  -->
+       <div class="card-body tab-content">
+         <div class="tab-pane fade show active" id="tab1">
+           <h4 class="card-title">QUESTION 1</h4>
+           <p>What is agile</p>
+
+            <input type="radio" id="val1" name="val1" value="val1">
+            <label for="val1">OPTION 1</label><br>
+            <input type="radio" id="val2" name="val2" value="val2">
+            <label for="val2">OPTION 2</label><br>
+            <input type="radio" id="val3" name="val3" value="val3">
+            <label for="val3">OPTION 3</label>
+         
+         </div>
+
+         <div class="tab-pane fade show " id="tab2">
+            <h4 class="card-title">QUESTION 2</h4>
+            <p> What is agile</p>
+ 
+             <input type="radio" id="val1" name="val1" value="val1">
+             <label for="val1">OPTION 1</label><br>
+             <input type="radio" id="val2" name="val2" value="val2">
+             <label for="val2">OPTION 2</label><br>
+             <input type="radio" id="val3" name="val3" value="val3">
+             <label for="val3">OPTION 3</label>
+          
+          </div>
+
+         </div>
+         </div>
+         </div>
+  </div>
+
+</div>
+  
+
+{%endblock%}
+
+
+
+
+{% block script %} 
+<script>
+
+$(document).ready(function() {
+	$("#sidebarCollapse").on("click", function() {
+	  $("#sidebar").toggleClass("active");
+	  $(this).toggleClass("active");
+	});
+  });
+
+ 
+
+</script>
+
+{% endblock %}

@@ -58,3 +58,7 @@ def course():
 @app.route('/material')
 def material():
     return render_template('material.html')
+
+@app.route('/questions')
+def questions():
+    return render_template('questions.html')
