@@ -23,7 +23,8 @@ Logout
 
 {% block css %}
 
-<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/style2.css') }}">
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/material_style.css') }}">
+
 
 {% endblock %}
 
@@ -58,11 +59,96 @@ Logout
   
     <!-- Page Content Holder -->
     <div id="content">
-            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                <span></span>
+            <button type="button" id="sidebarCollapse">
+                <img src="{{ url_for('static',filename='images/sidbar.png') }}" alt="Image" style="width:50px;height:50px;">
+              
             </button>
      </div>
       
+
+</div>
+
+<div class="content-display">
+<div class="header-title">
+  Agile Methodolgy
+
+</div>
+<div class="section1">
+
+  <div class="container">
+  
+    <div class="row">
+      <div class="col-lg-12">
+       <div class="card text-center my-4">
+         <!-- navigation in .card-header -->
+         <div class="card-header">
+           <ul class="nav nav-tabs card-header-tabs">
+             <li class="nav-item">
+               <a class="nav-link active" data-toggle="tab" href="#tab1">1</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#tab2">2</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#tab3">3</a>
+             </li>
+             <li class="nav-item">
+              <a class="nav-link " data-toggle="tab" href="#tab4">4</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab5">5</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab6">6</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " data-toggle="tab" href="#tab7">7</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab8">8</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab9">9</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab10">10</a>
+            </li>
+           </ul>
+         </div>
+         <!-- .card-body.tab-content  -->
+         <div class="card-body tab-content">
+           <div class="tab-pane fade show active" id="tab1">
+             <h4 class="card-title">DEFINITION</h4>
+             <p class="card-text">Agile methodology is a type of project management process, mainly used for software development, where demands and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customers.
+
+              The Agile methodology is a collection of principles that value adaptability and flexibility. Agile  aims to provide better responsiveness to changing business needs and therefore focuses on enabling teams to deliver in workable increments.
+              
+              Stemming from the values and principles of the Agile Manifesto, it was created as a response to the inadequacies of traditional development methods such as the Waterfall method. The software industry is a highly competitive market due to the fact that software is something that can be continuously updated. This means that developers need to constantly improve and innovate their products to keep on top of the game—and the linear, sequential approach of the Waterfall method just wasn’t</p>
+          </p>
+             <a href="#" class="btn btn-primary">Read More </a>
+           </div>
+          
+           <div class="tab-pane fade show active" id="tab2">
+            <h4 class="card-title">DEFINITION 2</h4>
+            <p class="card-text">Agile methodology is a type of project management process, mainly used for software development, where demands and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customers.
+
+             The Agile methodology is a collection of principles that value adaptability and flexibility. Agile  aims to provide better responsiveness to changing business needs and therefore focuses on enabling teams to deliver in workable increments.
+             
+             Stemming from the values and principles of the Agile Manifesto, it was created as a response to the inadequacies of traditional development methods such as the Waterfall method. The software industry is a highly competitive market due to the fact that software is something that can be continuously updated. This means that developers need to constantly improve and innovate their products to keep on top of the game—and the linear, sequential approach of the Waterfall method just wasn’t</p>
+         </p>
+            <a href="#" class="btn btn-primary">Read More </a>
+          </div>
+
+
+          
+            </div><!--/.card-body -->
+        </div><!--/.card-->
+      </div><!--/.col-sm-6 -->
+      </div>
+    
+
+   
+  </div>
 
 </div>
 
@@ -82,6 +168,9 @@ $(document).ready(function() {
 	  $(this).toggleClass("active");
 	});
   });
+
+
+
 </script>
 
 {% endblock %}
