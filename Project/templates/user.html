@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
+{% block icon %}
+<img src="{{ url_for('static',filename='/images/signup.png') }}" alt="Image" style="width:50px;height:50px; margin-top:-20px" class="img-fluid">
+
+{%endblock%}
 {% block login %} 
 Logout
 {% endblock%}
+
+
+
+{% block register %}
+
+{{value1}}
+
+{% endblock %}
+
 {% block content %}
-<h1> Welcome - {{value1}} </h1>
+
 {%endblock%}
 

@@ -36,15 +36,23 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
+                {% block heading %}
+                
+              {%endblock %}
                 
             </ul>
+
+
             <ul class="navbar-nav">
                 
+              <li class="nav-item">
+                <a class="nav-link" href="/users"></a> {% block icon %} {% endblock %}</a>
+            </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/login">{% block login %} {% endblock %}</a>
               </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/register">Register</a>
+                    <a class="nav-link" href="/register"> {% block register %} {% endblock %}</a>
                 </li>
             </ul>
         </div>

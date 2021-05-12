@@ -3,6 +3,10 @@
     Login - Page
 {% endblock %}
 
+{% block register %}
+REGISTER
+{% endblock %}
+
 {% block css %}
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
@@ -14,6 +18,8 @@
     <link rel="stylesheet" href= "{{ url_for('static',filename='/css/bootstrap.min.css') }}">
     
     <link rel="stylesheet" href= "{{ url_for('static',filename='/css/style.css') }}">
+
+    
 {% endblock %}
 
 
@@ -51,25 +57,11 @@
                   <input type="checkbox" checked="checked"/>
                   <div class="control__indicator"></div>
                 </label>
-               <!---<span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> -->
               </div>
 
               <input type="submit" value="Log In" class="btn btn-block btn-primary">
 
-            <!--  <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
-              
-              <div class="social-login">
-                <a href="#" class="facebook">
-                  <span class="icon-facebook mr-3"></span> 
-                </a>
-                <a href="#" class="twitter">
-                  <span class="icon-twitter mr-3"></span> 
-                </a>
-                <a href="#" class="google">
-                  <span class="icon-google mr-3"></span> 
-                </a>
-              </div>
-              -->
+          
             </form>
             </div>
           </div>

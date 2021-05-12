@@ -52,3 +52,9 @@ def users(value):
 @app.route('/error')
 def error():
    return render_template('error.html')
+@app.route('/course')
+def course():
+    return render_template('course.html')
+@app.route('/material')
+def material():
+    return render_template('material.html')
