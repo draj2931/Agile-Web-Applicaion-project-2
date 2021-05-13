@@ -11,13 +11,40 @@ class users(db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username) 
 
-class content_table(db.Model):
-    content_id=db.Column(db.Integer,primary_key=True)
-    content_name=db.Column(db.String(100),nullable=False)
-    section1=db.Column(db.String(1000),nullable=False)
-    section2=db.Column(db.String(1000),nullable=False)
-    section3=db.Column(db.String(1000),nullable=False)
-    section4=db.Column(db.String(1000),nullable=False)
+class question_table(db.Model):
+    question_id=db.Column(db.Integer,primary_key=True)
+    question=db.Column(db.String(1000),nullable=False)
+    option1=db.Column(db.String(1000),nullable=False)
+    option2=db.Column(db.String(1000),nullable=False)
+    option3=db.Column(db.String(1000),nullable=False)
+    option4=db.Column(db.String(1000),nullable=False)
+    Answers=db.Column(db.String(1000),nullable=False)
+
+class evaluation_table(db.Model):
+    evalid=db.Column(db.Integer,primary_key=True)
+    username=db.Column(db.String(100),nullable=False)
+    question1=db.Column(db.String(100),nullable=False)
+    question2=db.Column(db.String(100),nullable=False)
+    question3=db.Column(db.String(100),nullable=False)
+    question4=db.Column(db.String(100),nullable=False)
+    question5=db.Column(db.String(100),nullable=False)
+
+class progress_tracker(db.Model):
+    progress_id=evalid=db.Column(db.Integer,primary_key=True)
+    username=db.Column(db.String(100),nullable=False)
+    progress=db.Column(db.String(100),nullable=False)
+
+    
+
+
+
+
+
+
+    
+
+
+    
 # add pictures
 
 

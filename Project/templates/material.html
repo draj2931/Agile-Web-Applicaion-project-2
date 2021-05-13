@@ -17,7 +17,7 @@ Logout
 
 {% block register %}
 
-{{value1}}
+{{username}}
 
 {% endblock %}
 
@@ -40,11 +40,20 @@ Logout
       <ul class="list-unstyled components">
         <p>Agile Methodology</p>
         <li >
-          <a href="#tab1" data-toggle="tab">CONTENT1</a>
+          <a href="#tab1"  data-toggle="tab">DEFENITIONS </a>
 
-          <a href="#tab2" data-toggle="tab" >CONTENT2</a>
+          <a href="#tab2" data-toggle="tab" >HISTORY</a>
 
-          <a href="#tab3"  data-toggle="tab">CONTENT3</a>
+          <a href="#tab3"  data-toggle="tab">What is Agile</a>
+
+          <a href="#tab4"  data-toggle="tab">Agile values</a>
+
+          <a href="#tab5"  data-toggle="tab">Principles</a>
+
+          <a href="#tab6" data-toggle="tab">Deliverables</a>
+
+
+          <a href="/questions/{{username}}">QUIZ</a>
 
          
         </li>
@@ -70,50 +79,112 @@ Logout
   Agile Methodolgy
 
 </div>
+
+<form method="POST">
 <div class="section1">
 
   <div class="container">
   
-   
   
       <div class="row">
         <div class="col-lg-12">
          <div class="card text-center my-4">
-           <!-- navigation in .card-header -->
-          
-           <!-- .card-body.tab-content  -->
+         
            <div class="card-body tab-content">
-             <div class="tab-pane fade show active" id="tab1">
-               <h4 class="card-title">TITLE 1</h4>
-               <p class="card-text">Agile methodology is a type of project management process, mainly used for software development, where demands and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customers.
+
+            <div class="tab-pane fade show active" id="tab1">
+              <h4 class="card-title">AGILE</h4>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/fDLuObNgPBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <a href="#tab2" data-toggle="tab" class="btn btn-primary">NEXT</a>
+           <br> <input type="submit" name="completed" value="1">Save progress
+            </div>
+
+             <div class="tab-pane fade show " id="tab2">
+               <h4 class="card-title">Defenition </h4>
+               <p class="card-text">
+                 
+                Agile methodology is a type of project management process, mainly used for software development, where demands and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customers.
 
                 The Agile methodology is a collection of principles that value adaptability and flexibility. Agile  aims to provide better responsiveness to changing business needs and therefore focuses on enabling teams to deliver in workable increments.
                 
                 Stemming from the values and principles of the Agile Manifesto, it was created as a response to the inadequacies of traditional development methods such as the Waterfall method. The software industry is a highly competitive market due to the fact that software is something that can be continuously updated. This means that developers need to constantly improve and innovate their products to keep on top of the game—and the linear, sequential approach of the Waterfall method just wasn’t</p>
-            </p>
-             <a href="#tab2"  data-toggle="tab" class="btn btn-primary">NEXT</a> 
-             </div>
-             <div class="tab-pane fade" id="tab2">
-                              <h4 class="card-title"> Title 2</h4>
-               <p class="card-text">Agile methodology is a type of project management process, mainly used for software development, where demands and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customers.
+              </p>
+             <a href="#tab3" data-toggle="tab"  class="btn btn-primary">NEXT</a> 
+             <br> <input type="submit" id="completed" name="completed" value="2">Save progress 
+            </div>
 
-                The Agile methodology is a collection of principles that value adaptability and flexibility. Agile  aims to provide better responsiveness to changing business needs and therefore focuses on enabling teams to deliver in workable increments.
-                
-                Stemming from the values and principles of the Agile Manifesto, it was created as a response to the inadequacies of traditional development methods such as the Waterfall method. The software industry is a highly competitive market due to the fact that software is something that can be continuously updated. This means that developers need to constantly improve and innovate their products to keep on top of the game—and the linear, sequential approach of the Waterfall method just wasn’t</p>
-             </p>
-             <a href="#tab3"  data-toggle="tab" class="btn btn-primary">NEXT</a> 
-
-             </div>
              <div class="tab-pane fade" id="tab3">
-               <h4 class="card-title">Title 3</h4>
-               <p class="card-text">Agile methodology is a type of project management process, mainly used for software development, where demands and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customers.
+                  <h4 class="card-title"> History </h4>
+               <p class="card-text">
+                 In the 1990s, software development faced a bit of a crisis. Referred to as ‘the application development crisis’ or ‘application delivery lag’, the industry realized that it couldn’t move fast enough to meet customer demands and requirements—the estimated time between a business need and actual application was about three years. See, traditional development models were based on a timeline approach, where development happened sequentially and the final product wasn’t revealed to customers until the very final step. This left little room for flexibility when it came to progress reviews and changes. So, by the time an actual application was finished, it was highly likely that requirements and systems of the project’s original objectives had changed.
 
-                The Agile methodology is a collection of principles that value adaptability and flexibility. Agile  aims to provide better responsiveness to changing business needs and therefore focuses on enabling teams to deliver in workable increments.
-                
-                Stemming from the values and principles of the Agile Manifesto, it was created as a response to the inadequacies of traditional development methods such as the Waterfall method. The software industry is a highly competitive market due to the fact that software is something that can be continuously updated. This means that developers need to constantly improve and innovate their products to keep on top of the game—and the linear, sequential approach of the Waterfall method just wasn’t</p>
-            </p>
-               
+                With time, money, and efforts wasted, and even some projects cancelled halfway through, professional leaders of the software community thought it was time for a new, refreshed approach. Then in 2001, in a snowy, ski lodge in Utah, a group of industry practitioners gathered to discuss industry practices. Though the meeting was set up with a primary focus on the discussion of development cycles, some participants were already entertaining the idea of a new software development method. They all yearned to cement a process that legitimized what was being practised, and so, came the creation of the Agile Manifesto.</p>
+             <a href="#tab4"  data-toggle="tab" class="btn btn-primary">NEXT</a> 
+             <br> <input type="submit" name="completed" value="3">Save progress
+
              </div>
+             <div class="tab-pane fade" id="tab4">
+               <h4 class="card-title">What is Agile</h4>
+               <p class="card-text">The Agile Manifesto is a declaration of the values and principles expressed in Agile methodology. Made up of four foundational values and 12 key principles, it aims to help uncover better ways of developing software by providing a clear and measurable structure that promotes iterative development, team collaboration, and change recognition.</p>
+               <a href="#tab5"  data-toggle="tab" class="btn btn-primary">NEXT</a> 
+               <br> <input type="submit" name="completed" value="4">Save progress
+
+             </div>
+
+            
+
+
+            <div class="tab-pane fade" id="tab5">
+              <h4 class="card-title">Agile Values</h4>
+              <p class="card-text">Individuals and interactions over processes and tools
+                Working software over comprehensive documentation
+                Customer collaboration over contract negotiation
+                Responding to change over following a plan</p>
+                <a href="#tab6"  data-toggle="tab" class="btn btn-primary">NEXT</a> 
+                <br> <input type="submit" name="completed" value="5">Save progress
+
+            </div>
+
+
+            <div class="tab-pane fade" id="tab6">
+              <h4 class="card-title">Agile Principles</h4>
+              <p class="card-text">
+                <li> Customer satisfaction through early and continuous software delivery </li>
+                <li>  Accommodate changing requirements throughout the development process</li>
+                <li>  Frequent delivery of working software</li>
+                <li> Collaboration between the business stakeholders and developers throughout the project</li>
+                <li> Support, trust, and motivate the people involved</li>
+                <li> Enable face-to-face interactions</li>
+                <li> Working software is the primary measure of progress</li>
+                <li> Agile processes to support a consistent development pace</li>
+                <li> Attention to technical detail and design enhances agility</li>
+                <li>  Simplicity</li>
+                <li>  Self-organizing teams encourage great architectures, requirements, and designs</li>
+                <li>  Regular reflections on how to become more effective </li></p>
+                <a href="#tab7"  data-toggle="tab" class="btn btn-primary" >NEXT</a> 
+                <br> <input type="radio" name="completed" value="6"> Mark as Completed 
+
+            </div>
+
+
+            <div class="tab-pane fade" id="tab7">
+              <h4 class="card-title">Deliverables</h4>
+              <p class="card-text">The deliverables:
+               <li> Product vision statement: A summary that articulates the goals for the product. </li>
+               <li> Product roadmap: The high-level view of the requirements needed to achieve the product vision. </li>
+               <li>Product backlog: Ordered by priority, this is the full list of what is needed for your project. </li>
+               <li> Release plan: A timetable for the release of a working product.</li>
+               <li>  Sprint backlog: The user stories (requirements), goals, and tasks linked to the current sprint. </li>
+               <li>  Increment: The working product functionality that is presented to the stakeholders at the end of the sprint and could potentially be given to the customer. </li>
+           </p>
+
+           <a href="/questions/{{username}}"  class="btn btn-primary" >Take Quiz</a> 
+
+              </div>
+
+
+
               </div><!--/.card-body -->
 
               <div class="card-header">
@@ -127,6 +198,15 @@ Logout
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#tab3">3</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab4">4</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab5">5</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab6">6</a>
+                  </li>
                 </ul>
               </div>
           </div><!--/.card-->
@@ -137,6 +217,7 @@ Logout
 
 </div>
 
+</form>
 
 
 {%endblock%}

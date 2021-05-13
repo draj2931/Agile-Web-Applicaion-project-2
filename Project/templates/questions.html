@@ -17,13 +17,18 @@ Logout
 
 {% block register %}
 
-{{value1}}
+{{username}}
 
 {% endblock %}
 
 {% block css %}
 
 <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/material_style.css') }}">
+
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/question_style.css') }}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 
 
 {% endblock %}
@@ -83,53 +88,53 @@ Logout
       
 
 </div>
+
+<form method="POST">
 <div class="content-display">
-<div class="header-title">
-  ASSESMENT
-  
-  </div>
+    <div class="header-title">
+        ASSESMENT
+    </div>
 
 
 
-  <div class="row">
-    <div class="col-lg-12">
-     <div class="card text-center my-4">
-       <!-- navigation in .card-header -->
-      
-       <!-- .card-body.tab-content  -->
-       <div class="card-body tab-content">
-         <div class="tab-pane fade show active" id="tab1">
-           <h4 class="card-title">QUESTION 1</h4>
-           <p>What is agile</p>
-
-            <input type="radio" id="val1" name="val1" value="val1">
-            <label for="val1">OPTION 1</label><br>
-            <input type="radio" id="val2" name="val2" value="val2">
-            <label for="val2">OPTION 2</label><br>
-            <input type="radio" id="val3" name="val3" value="val3">
-            <label for="val3">OPTION 3</label>
-         
-         </div>
-
-         <div class="tab-pane fade show " id="tab2">
-            <h4 class="card-title">QUESTION 2</h4>
-            <p> What is agile</p>
  
-             <input type="radio" id="val1" name="val1" value="val1">
-             <label for="val1">OPTION 1</label><br>
-             <input type="radio" id="val2" name="val2" value="val2">
-             <label for="val2">OPTION 2</label><br>
-             <input type="radio" id="val3" name="val3" value="val3">
-             <label for="val3">OPTION 3</label>
-          
-          </div>
+    <div class="col-lg-12">
+        
+            {% for i in range (0,len) %}
 
-         </div>
-         </div>
-         </div>
-  </div>
+            <div class="col-lg-8" style=" text-align:justify; background-color: antiquewhite;">
+            
+              <ol>{{items[i].question}}</ol>
+              <ul></ul>
+                <input type="radio" id=1 value=A name={{i}} >
+                <label> {{items[i].option1}}</label> <br> 
+                <input type="radio" id=2 value=B name={{i}} >
+                <label>{{items[i].option2}}</label> <br>
+               <input type="radio"  id=3 value= C name={{i}}>
+               <label>{{items[i].option3}}</label> <br>
+                <input type="radio"  id=4 value=D name={{i}}>
+                <label>{{items[i].option4}}</label> <br>
+            </ul>
 
+
+            </div>
+
+
+            
+              {% endfor %}
+
+              <input type="submit">  
+ 
+
+      
+       
+    </div>
 </div>
+
+</form>
+ 
+
+
   
 
 {%endblock%}
@@ -150,5 +155,9 @@ $(document).ready(function() {
  
 
 </script>
+
+<script src="{{ url_for('static',filename='/js/question.js') }}"  ></script>
+<script src="{{ url_for('static',filename='/js/question1.js') }}"  ></script>
+
 
 {% endblock %}
