@@ -3,6 +3,8 @@
     Login - Page
 {% endblock %}
 
+
+
 {% block register %}
 REGISTER
 {% endblock %}
@@ -43,23 +45,17 @@ REGISTER
             <form action="#" method="POST">
               <div class="form-group first">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username">
+                <input type="text" required class="form-control" id="username" name="username">
 
               </div>
               <div class="form-group last mb-4">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <label  for="password">Password</label>
+                <input  required type="password" class="form-control" id="password" name="password">
                 
               </div>
-              
-              <div class="d-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                  <input type="checkbox" checked="checked"/>
-                  <div class="control__indicator"></div>
-                </label>
-              </div>
+            
 
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
+              <input type="submit"  value="Log In" class="btn btn-block btn-primary">
 
           
             </form>
@@ -84,6 +80,12 @@ REGISTER
 
 
 {%block script%}
+
+<script>
+  function myfunction(){
+    alert("Wrong username or password");
+  }
+</script>
 
     <script src="{{ url_for('static',filename='/js/jquery-3.3.1.min.js') }}"  ></script>
     <script src= "{{ url_for('static',filename='/js/popper.min.js') }}"></script>

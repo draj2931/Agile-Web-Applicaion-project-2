@@ -22,9 +22,12 @@ def login():
         if attempted_user is None :
             
             return redirect(url_for('error'))
+
         elif attempted_user.username == usr and attempted_user.password == pwd :
+           
             return redirect(url_for('users',value=usr))
         else:
+            
             return redirect(url_for('register'))
     else:
         return render_template('login.html')
@@ -56,6 +59,7 @@ def users(value):
 @app.route('/error')
 def error():
    return render_template('error.html')
+
 @app.route('/course')
 def course():
     return render_template('course.html')
@@ -92,7 +96,7 @@ def questions(id):
         answer3=request.form["2"]
         answer4=request.form["3"]
         print(answer4)
-        
+
         answer5=request.form["4"]
 
         save_answers=models.evaluation_table(username=id,question1=answer1,question2=answer2,question3=answer3,question4=answer4,question5=answer5)
@@ -109,6 +113,26 @@ def questions(id):
             models.db.session.commit()
           
 
+        
+        answers= models.evaluation_table.query.filter_by(username=id).first()
+        crt_answers=models.question_table.query.all()
+        point=0
+
+  
+
+        if(answers.question1 == crt_answers[0].Answers):
+            point=point+1
+        if(answers.question2 == crt_answers[1].Answers):
+            point=point+1
+        if(answers.question3 == crt_answers[2].Answers):
+            point=point+1
+        if(answers.question4 == crt_answers[3].Answers):
+            point=point+1
+        if(answers.question5 == crt_answers[4].Answers):
+            point=point+1
+
+        return redirect(url_for('result',score=point,name=id))
+
 
         
 
@@ -119,31 +143,8 @@ def questions(id):
     return render_template('questions.html', len=len(values),items=values,username=id )
 
 
-@app.route('/result/<string:id>',methods=["POST","GET"])
-def result(id):
+@app.route('/result/<int:score>/<string:name>')
+def result(score,name):
 
-    answers= models.evaluation_table.query.filter_by(username=id).first()
-    crt_answers=models.question_table.query.all()
-    point=0
-
-   # print(answers.question1)
-   # print(crt_answers[0].Answers)
-
-    if(answers.question1 == crt_answers[0].Answers):
-        point=point+1
-    if(answers.question2 == crt_answers[1].Answers):
-        point=point+1
-    if(answers.question3 == crt_answers[2].Answers):
-        point=point+1
-    if(answers.question4 == crt_answers[3].Answers):
-        point=point+1
-    if(answers.question5 == crt_answers[4].Answers):
-        point=point+1
-
-    print("++++++++")
-    print(point)
-    
-
-
-    return render_template("result.html",score=point)
+    return render_template("result.html",scores=score,user=name)
 
