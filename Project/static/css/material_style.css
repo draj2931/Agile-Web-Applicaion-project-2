@@ -93,7 +93,7 @@ a:focus {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #343a40;
+  background: #483dff;
 }
 
 #sidebar ul.components {
@@ -259,3 +259,8 @@ a.article:hover {
     }
   }
   
+
+.agile-list{
+  list-style-type: square;
+  align-items: center;
+}
