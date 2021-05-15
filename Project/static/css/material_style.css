@@ -261,6 +261,10 @@ a.article:hover {
   
 
 .agile-list{
-  list-style-type: circle;
+  list-style-type: square;
   align-items: center;
+}
+.card-text > li{
+  text-align: left;
+  align-items: flex-start;
 }
