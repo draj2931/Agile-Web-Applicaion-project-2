@@ -259,3 +259,8 @@ a.article:hover {
     }
   }
   
+
+.agile-list{
+  list-style-type: circle;
+  align-items: center;
+}
