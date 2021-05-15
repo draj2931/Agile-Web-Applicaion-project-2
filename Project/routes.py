@@ -42,11 +42,24 @@ def register():
         ncpwd=request.form['re_password']
         email=request.form['email']
 
-        usrdetail=models.users(username=nusr,emailid=email,password=npwd,confirm_password=ncpwd)
-        models.db.session.add(usrdetail)
-        models.db.session.commit()
+        register_user= models.users.query.filter_by(emailid=email).first()
+        if(register_user is None):
+             usrdetail=models.users(username=nusr,emailid=email,password=npwd,confirm_password=ncpwd)
+             models.db.session.add(usrdetail)
+             models.db.session.commit()
+             return redirect(url_for('login'))
+
+        else: 
+            return redirect(url_for('error'))
+
+       
+
+
+
+
+
+       
         # check this route file where link above is not changing
-        return redirect(url_for('login'))
 
     return render_template('register.html')
 

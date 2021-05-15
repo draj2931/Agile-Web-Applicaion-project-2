@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% block heading %}
 <li class="nav-item active">
-  <div class="heading1" style="margin-left:150px; width:450px;">
+  <div class="heading1" style="margin-left:310px; width:450px;">
     <a class="nav-link" style="color:white;"> AGILE METHODOLOGY</a>
   </div>
 </li>
@@ -33,22 +33,24 @@ Logout
 {% block content %}
 
 
+<div class="content-main">
+
 <div class="wrapper">
 
-  <nav id="sidebar">
+  <!-- <nav id="sidebar">
     <div class="sidebar-header">
       <h3>CONTENTS</h3>
 
     </div>
 
-    <ul class="list-unstyled components">
-      <p>Agile Methodology</p>
+    <ul class="list-unstyled components" role='tablist'>
+      <p>TOPICS</p>
 
-      <li> <a href="#tab1" id="nav1" data-toggle="tab">DEFENITIONS </a> </li>
+      <li> <a href="#tab1" data-toggle="tab" role='tab'>  DEFENITIONS </a> </li>
 
-      <li> <a href="#tab2" data-toggle="tab">HISTORY</a> </li>
+      <li> <a href="#tab2" data-toggle="tab" role='tab'>HISTORY</a> </li>
 
-      <li><a href="#tab3" data-toggle="tab">What is Agile</a> </li>
+      <li><a href="#tab3" data-toggle="tab" role=>What is Agile</a> </li>
 
       <li> <a href="#tab4" data-toggle="tab">Agile values</a> </li>
 
@@ -64,24 +66,24 @@ Logout
 
     </ul>
 
-  </nav>
+  </nav> -->
 
   <!-- Page Content Holder -->
-  <div id="content">
+  <!-- <div id="content">
     <button type="button" id="sidebarCollapse">
       <img src="{{ url_for('static',filename='images/sidbar.png') }}" alt="Image" style="width:50px;height:50px;">
 
     </button>
-  </div>
+  </div> -->
 
 
 </div>
 
-<div class="content-display">
+<!-- <div class="content-display">
   <div class="header-title">
     Agile Methodolgy
 
-  </div>
+  </div> -->
 
 
   <form method="POST">
@@ -216,6 +218,8 @@ Logout
                   </p>
 
                   <a href="/questions/{{username}}" class="btn btn-primary">Take Quiz</a>
+                  <br> <input type="radio" name="completed" value="7"> Mark as Completed
+
 
                 </div>
 
@@ -243,6 +247,11 @@ Logout
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#tab6">6</a>
+
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab7">7</a>
+                    
                   </li>
                 </ul>
               </div>
@@ -258,6 +267,8 @@ Logout
     </div>
 
   </form>
+
+</div>
 
 </div>
 

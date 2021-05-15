@@ -1,8 +1,27 @@
 {% extends 'base.html' %} 
  {% block content %}
 
- <h1> Invalid Login  </h1>
+<body onload="myfunction()">
 
- <a href="/login" > Login</a>
+    
+</body>
 
  {% endblock %}
+
+ 
+
+ {% block script %}
+
+
+
+<script> 
+function myfunction() {
+
+  alert("Invalid user login");
+  
+  location.replace("register")
+
+}
+
+</script>
+ {%endblock%}
