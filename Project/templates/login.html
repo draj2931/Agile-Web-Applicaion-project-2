@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    Login - Page
+Login - Page
 {% endblock %}
 
 
@@ -11,36 +11,39 @@ REGISTER
 
 {% block css %}
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ url_for('static',filename='/fonts/icomoon/style.css') }}" > 
+<link rel="stylesheet" href="{{ url_for('static',filename='/fonts/icomoon/style.css') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static',filename='/css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='/css/owl.carousel.min.css') }}">
 
-    <link rel="stylesheet" href= "{{ url_for('static',filename='/css/bootstrap.min.css') }}">
-    
-    <link rel="stylesheet" href= "{{ url_for('static',filename='/css/login_style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='/css/bootstrap.min.css') }}">
 
-    
+<link rel="stylesheet" href="{{ url_for('static',filename='/css/login_style.css') }}">
+
+
 {% endblock %}
 
 
 {% block content %}
 
 
-      
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="{{ url_for('static',filename='/images/undraw_remotely_2j6y.svg') }}" alt="Image" class="img-fluid">
-        </div>
-        <div class="col-md-6 contents">
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="mb-4">
+
+
+
+
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ url_for('static',filename='/images/undraw_remotely_2j6y.svg') }}" alt="Image" class="img-fluid">
+      </div>
+      <div class="col-md-6 contents">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="mb-4">
               <h3>Sign In</h3>
-              <p class="mb-4">....</p>
+              <p class="mb-4">Please Sign in with your name</p>
             </div>
             <form action="#" method="POST">
               <div class="form-group first">
@@ -49,24 +52,35 @@ REGISTER
 
               </div>
               <div class="form-group last mb-4">
-                <label  for="password">Password</label>
-                <input  required type="password" class="form-control" id="password" name="password">
-                
+                <label for="password">Password</label>
+                <input required type="password" class="form-control" id="password" name="password">
+
               </div>
-            
 
-              <input type="submit"  value="Log In" class="btn btn-block btn-primary">
 
-          
+              <input type="submit" value="Log In" class="btn btn-block btn-primary">
+
+
+              {% if error %}
+
+              <div class="errorclass">
+
+                {{ error }}
+
+              </div>
+
+
+              {% endif %}
+
             </form>
-            </div>
           </div>
-          
         </div>
-        
+
       </div>
+
     </div>
   </div>
+</div>
 
 
 
@@ -74,23 +88,19 @@ REGISTER
 
 
 
-    
-    
+
+
 {% endblock %}
 
 
 {%block script%}
 
-<script>
-  function myfunction(){
-    alert("Wrong username or password");
-  }
-</script>
 
-    <script src="{{ url_for('static',filename='/js/jquery-3.3.1.min.js') }}"  ></script>
-    <script src= "{{ url_for('static',filename='/js/popper.min.js') }}"></script>
-    <script src= "{{ url_for('static',filename='/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='/js/main.js') }}"></script>
+
+<script src="{{ url_for('static',filename='/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ url_for('static',filename='/js/popper.min.js') }}"></script>
+<script src="{{ url_for('static',filename='/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='/js/main.js') }}"></script>
 
 
 {%endblock%}

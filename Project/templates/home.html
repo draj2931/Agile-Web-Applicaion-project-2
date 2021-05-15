@@ -1,23 +1,57 @@
-
 <!-- Vignesh changes -->
 
 {% extends 'base.html' %}
 {% block title %}
-    Home - Page
+Home - Page
 {% endblock %}
 
-{% block login %} 
- Login
+{% block login %}
+Login
 {% endblock%}
 
-{% block register %} 
- Register
+{% block register %}
+Register
 {% endblock%}
 
 {% block content %}
-<center>
-    <h1> Welcome  to the application</h1>
- </center>
+<script src="../static/js//bootstrap.min.js">
+</script>
+<link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css" />
+<div>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <img class="w3-image" src="../static//images/learning.jpg" alt="Architecture" width="1500" height="800">
+        <div class="w3-display-middle w3-margin-top w3-center">
+            <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Education</b></span>
+                <span class="w3-hide-small w3-text-light-grey">Camp</span>
+            </h1>
+        </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content w3-padding" style="max-width:1564px">
+        <!-- About Section -->
+        <div class="w3-container w3-padding-32" id="about">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-info h3">About</h3>
+            <p>Human learning starts at birth (it might even start before) and continues until death as a
+                consequence of ongoing interactions between people and their environment.
+                The nature and processes involved in learning are studied in many fields,
+                including educational psychology, neuropsychology, experimental psychology,
+                and pedagogy. Research in such fields has led to the identification of various sorts of learning.
+                For example, learning may occur as a result of habituation, or classical conditioning, operant
+                conditioning
+                or as a result of more complex activities such as play, seen only in relatively intelligent animals.
+                Learning may occur consciously or without conscious awareness
+            </p>
+        </div>
+        <a href="/login">
+        <h3 style="text-align:center" class="text-success h3">Please Login to see available courses.</h3>
+        </a>
+    </div>
 
 
- {% endblock %}
+</div>
+
+{% endblock %}

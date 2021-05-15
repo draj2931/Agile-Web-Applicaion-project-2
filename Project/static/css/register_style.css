@@ -1,3 +1,14 @@
+
+.errorclass {
+  margin-left: 20%;
+  color: #f3955d;
+  font-size: 15px;
+  width: 350px;
+  height: auto;
+ 
+}
+
+
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center {
   display: flex;

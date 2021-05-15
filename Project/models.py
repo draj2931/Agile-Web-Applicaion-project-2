@@ -49,6 +49,7 @@ class result_table(db.Model):
     category2=db.Column(db.Integer,nullable=False)
     category3=db.Column(db.Integer,nullable=False)
     overall=db.Column(db.Integer,nullable=False)
+    
 
 
 

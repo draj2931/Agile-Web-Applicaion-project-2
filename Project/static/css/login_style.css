@@ -20,6 +20,17 @@ a {
 .content {
   padding: 7rem 0; }
 
+
+.errorclass{
+    margin-left:24%;
+    color:rgb(252, 134, 87);
+    font-size: 15px;
+    width: 350px;
+    height: auto;
+  }
+  
+  
+
 h2 {
   font-size: 20px; }
 

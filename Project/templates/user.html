@@ -16,9 +16,59 @@ Logout
 {% endblock %}
 
 {% block content %}
-
-<a  href="/material/{{value1}}" ><H2> AGILE METHODOLOGY</H2></a>
+<script src="../static/js//bootstrap.min.js">
+</script>
+<link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css" />
+<div>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <div class="w3-content w3-padding" style="max-width:1564px">
+        <div class="w3-container w3-padding-32" id="projects">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-info h3">Available Courses</h3>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-topleft w3-black w3-padding">Agile Methodology</div>
+                    <a href="/material/{{value1}}" >
+                    <img    class="img-responsive" src="../static/images/agile.jpeg" alt="Agile Methodology" style="width:99%;height: 40%;"> </a>
+                </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-topleft w3-black w3-padding">Basic Programming</div>
+                    <img class="img-responsive" src="../static/images/basic.jpg" alt="Basic Programming" style="width:99%;height: 40%;">
+                    <div style="color: red  !important ;" class="w3-display-bottomleft w3-black w3-padding">UNAVAILABLE</div>
+                </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-topleft w3-black w3-padding">Data Structures</div>
+                    <img class="img-responsive" src="../static/images/datastructure.jpg" alt="Data Structures" style="width:99%;height: 40%;">
+                    <div style="color: red  !important ;" class="w3-display-bottomleft w3-black w3-padding">UNAVAILABLE</div>
+                </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-topleft w3-black w3-padding">AI</div>
+                    <img class="img-responsive" src="../static/images/ai.jpg" alt="AI" style="width:99%;height: 40%;">
+                    <div style="color: red  !important ;" class="w3-display-bottomleft w3-black w3-padding">UNAVAILABLE</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!-- <a  href="/material/{{value1}}" ><H2> AGILE METHODOLOGY</H2></a> -->
 
 
 {%endblock%}
 
+
+
+
+
+Agile is an iterative approach to project management and software development that helps teams
+                    deliver value to their customers faster and with fewer headaches. Instead of betting everything on a
+                    "big bang" launch, an agile team delivers work in small, but consumable, increments. Requirements,
+                    plans, and results are evaluated continuously so teams have a natural mechanism for responding to
+                    change quickly.
