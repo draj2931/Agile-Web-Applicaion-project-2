@@ -3,17 +3,29 @@
 <img src="{{ url_for('static',filename='/images/signup.png') }}" alt="Image" style="width:50px;height:50px; margin-top:-20px" class="img-fluid">
 
 {%endblock%}
-{% block login %} 
-Logout
+
+
+{% block username %}
+<li class="nav-item">
+    <a class="nav-link">{{usrname}}</a>
+</li>
 {% endblock%}
 
 
+{% block login %}
+<li class="nav-item">
+    <a class="nav-link" href="/">Logout</a>
+</li>
+{% endblock%}
 
-{% block register %}
 
-{{value1}}
+ 
 
-{% endblock %}
+
+
+
+
+
 
 {% block content %}
 <script src="../static/js//bootstrap.min.js">
@@ -29,7 +41,7 @@ Logout
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Agile Methodology</div>
-                    <a href="/material/{{value1}}" >
+                    <a href="/material" >
                     <img    class="img-responsive" src="../static/images/agile.jpeg" alt="Agile Methodology" style="width:99%;height: 40%;"> </a>
                 </div>
             </div>

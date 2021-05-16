@@ -48,12 +48,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="/users"></a> {% block icon %} {% endblock %}</a>
             </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/login">{% block login %} {% endblock %}</a>
-              </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register"> {% block register %} {% endblock %}</a>
-                </li>
+
+            {% block username %}  {% endblock %}
+
+            {% block login %} {% endblock %}
+            {% block register %} {% endblock %}
+        
+
+                
+
+
             </ul>
         </div>
       </nav>
