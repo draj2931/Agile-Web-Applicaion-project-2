@@ -47,12 +47,14 @@ class progress_tracker(db.Model):
 
 class result_table(db.Model):
     result_id=db.Column(db.Integer,primary_key=True)
-    user_id=db.Column(db.Integer,unique=True)
     username=db.Column(db.String(100),nullable=False)
     category1=db.Column(db.Integer,nullable=False)
     category2=db.Column(db.Integer,nullable=False)
     category3=db.Column(db.Integer,nullable=False)
     overall=db.Column(db.Integer,nullable=False)
+
+
+    
 
 
     

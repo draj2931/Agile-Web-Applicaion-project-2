@@ -20,26 +20,19 @@ def login():
             usr = request.form['username']
             pwd = request.form['password']
 
-           
+            attempted_user = models.users.query.filter_by(
+                username=usr) .first()
 
-
-            attempted_user = models.users.query.filter_by(username=usr) .first()
-
-            
-
-            user=None
-            user_id=None
+            user = None
+            user_id = None
             if attempted_user is None:
 
                 error = "User not exists please register !!!"
 
             elif attempted_user.username == usr and attempted_user.password == pwd:
 
-                  
                 session['user'] = attempted_user.username
-                session['user_id'] =  attempted_user.user_id
-
-           
+                session['user_id'] = attempted_user.user_id
 
                 return redirect(url_for('users'))
             else:
@@ -48,6 +41,7 @@ def login():
         return render_template('login.html', error=error)
     except:
         return "ERROR"
+
 
 @app.route('/register', methods=["POST", "GET"])
 def register():
@@ -86,7 +80,7 @@ def register():
 @app.route('/users')
 def users():
 
-    username=session.get('user',None)
+    username = session.get('user', None)
     return render_template('user.html', usrname=username)
 
 
@@ -104,59 +98,51 @@ def course():
 def material():
 
     try:
-        usrname=session.get('user',None)
-        usrid=session.get('user_id',None)
-        
+        usrname = session.get('user', None)
+        usrid = session.get('user_id', None)
+
         print(usrname)
-        
+
         message = None
-        prog=None
+        prog = None
         if request.method == "POST":
 
-           
             prog = request.form['page']
-
-            print(prog)
-
 
             prog = int(prog)*10
 
-            print(usrid)
-            
-            progress_val = models.progress_tracker(username=usrname,user_id=usrid, progress=prog)
+            progress_val = models.progress_tracker(
+                username=usrname, progress=prog)
             existing_users = models.progress_tracker.query.filter_by(
                 user_id=usrid).first()
-            print(1)
+
             if existing_users is None:
-               
+
                 models.db.session.add(progress_val)
                 models.db.session.commit()
-                message="Progress saved"
-                print(11)
+                message = "Progress saved"
+                return render_template('material.html', username=usrname, msg=message, progres=prog)
 
             elif int(existing_users.progress) < int(prog):
-            
+
                 models.db.session.delete(existing_users)
 
                 models.db.session.add(progress_val)
                 models.db.session.commit()
-                message="Progress Saved"
+                message = "Progress Saved"
+                return render_template('material.html', username=usrname, msg=message, progres=prog)
             else:
-                 pass
+                pass
 
-
-
-        return render_template('material.html', username=usrname,msg=message,progres=prog)
+        return render_template('material.html', username=usrname, msg=message, progres=prog)
     except:
         return "error"
 
 
-@app.route('/questions', methods=["POST", "GET"])
-def questions():
+@app.route('/questions/<string:id>', methods=["POST", "GET"])
+def questions(id):
 
     try:
-        usrname=session.get('user',None)
-        usrid=session.get('user_id',None)
         values = models.question_table.query.all()
 
         if request.method == "POST":
@@ -174,15 +160,12 @@ def questions():
             answer9 = request.form["8"]
             answer10 = request.form["9"]
 
-            print("step1")
+            answer5 = request.form["4"]
 
-            save_answers = models.evaluation_table(user_id=usrid,username=usrname, question1=answer1, question2=answer2, question3=answer3, question4=answer4,
+            save_answers = models.evaluation_table(username=id, question1=answer1, question2=answer2, question3=answer3, question4=answer4,
                                                    question5=answer5, question6=answer6, question7=answer7, question8=answer8, question9=answer9, question10=answer10)
             existing_users = models.evaluation_table.query.filter_by(
-                user_id=usrid).first()
-
-            print("step2")
-            print(existing_users.username)
+                username=id).first()
             if existing_users is None:
 
                 models.db.session.add(save_answers)
@@ -190,25 +173,12 @@ def questions():
 
             else:
                 models.db.session.delete(existing_users)
-                print("step 3")
+
                 models.db.session.add(save_answers)
-                print("step 4")
                 models.db.session.commit()
 
-                
-
-
-
-            
             answers = models.evaluation_table.query.filter_by(
-            user_id=usrid).first()
-
-            print(answers.user_id)
-
-
-            
-
-        
+                username=id).first()
             crt_answers = models.question_table.query.all()
             point = 0
             cat1 = 0
@@ -218,12 +188,14 @@ def questions():
             if(answers.question1 == crt_answers[0].Answers):
                 point = point+1
                 cat1 = cat1+1
+
             if(answers.question2 == crt_answers[1].Answers):
                 point = point+1
                 cat1 = cat1+1
             if(answers.question3 == crt_answers[2].Answers):
                 point = point+1
                 cat1 = cat1+1
+
             if(answers.question4 == crt_answers[3].Answers):
                 cat2 = cat2+1
                 point = point+1
@@ -249,18 +221,19 @@ def questions():
                 cat1 = cat1+1
 
             point = point*10
-            cat1 = int(cat1/4)*100
-            cat2 = int(cat2/3)*100
-            cat3 = int(cat3/3)*100
+            cat1 = int(cat1)
+            cat1 = round((cat1/4 * 100))
 
-            print(123)
+            cat2 = int(cat2)
+            cat2 = round((cat2/3 * 100))
 
-            save_marks=models.result_table(user_id=usrid,username=usrname, category1=cat1,category2=cat2,category3=cat3,overall=point)
+            cat3 = int(cat3)
+            cat3 = round((cat3/3*100))
+
+            save_marks = models.result_table(
+                username=id, category1=cat1, category2=cat2, category3=cat3, overall=point)
             current_user = models.result_table.query.filter_by(
-               user_id=usrid).first()
-
-
-            print("save")
+                username=id).first()
 
             if current_user is None:
 
@@ -273,16 +246,15 @@ def questions():
                 models.db.session.add(save_marks)
                 models.db.session.commit()
 
-            session['cat1']=cat1
-            session['cat2']=cat2
-            session['cat3']=cat3
-            session['overall']=point
-            session['name']=id
-
+            session['cat1'] = cat1
+            session['cat2'] = cat2
+            session['cat3'] = cat3
+            session['overall'] = point
+            session['name'] = id
 
             return redirect(url_for('result'))
 
-        return render_template('questions.html', len=len(values), items=values, username=usrname)
+        return render_template('questions.html', len=len(values), items=values, username=id)
 
     except:
         return "ERROR"
@@ -291,10 +263,10 @@ def questions():
 @app.route('/result')
 def result():
 
-    cat1=session.get('cat1', None)
-    cat2=session.get('cat2', None)
-    cat3=session.get('cat3', None)
-    overall=session.get('overall', None)
-    name=session.get('name', None)
+    cat1 = session.get('cat1', None)
+    cat2 = session.get('cat2', None)
+    cat3 = session.get('cat3', None)
+    overall = session.get('overall', None)
+    name = session.get('name', None)
 
-    return render_template("result.html", scores=overall, user=name,val1=cat1,val2=cat2,val3=cat3)
+    return render_template("result.html", scores=overall, user=name, val1=cat1, val2=cat2, val3=cat3)

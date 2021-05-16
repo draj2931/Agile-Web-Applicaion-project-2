@@ -15,6 +15,13 @@ body {
     height: auto;
 } */
 
+.sample{
+  text-align: justify;
+  margin-left: 45%;
+  margin-top: 2%;
+  font-size: 50px;
+}
+
 .header-title{
     background-color:#ffffff;
     width:100%;
