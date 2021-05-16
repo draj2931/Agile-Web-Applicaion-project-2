@@ -3,21 +3,13 @@
 
 Education Camp is an educational web appplication to make online classes easy for students. Its current main features are the following:
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 28ab894d41fd87b49bd06a1693f19e6f6ad191cb
     * Courses based on new and upcoming technologies.
     * Proper and thorough understanding of the concepts.
     * Short quizzes to evaluate students' understanding.
     * Feedback option for students to make necessary changes.
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 28ab894d41fd87b49bd06a1693f19e6f6ad191cb
 *Dashboard: Landing Page of a logged-in user*
 ![Education Camp dashboard](https://github.com/draj2931/Agile-Web-Applicaion-project-2/blob/master/Dashboard.png)
 
@@ -57,8 +49,4 @@ The 'View' of the MVC Architecture can be categorised as the User Interface that
 
 
 
-=======
-=======
-*Dashboard: Landing Page of the user*
-![Education Camp dashboard](https://github.com/draj2931/Agile-Web-Applicaion-project-2/blob/master/Dashboard.png)
->>>>>>> 28ab894d41fd87b49bd06a1693f19e6f6ad191cb
+
