@@ -2,6 +2,7 @@
 
 
 Education Camp is an educational web appplication to make online classes easy for students. Its current main features are the following:
+
     * Courses based on new and upcoming technologies.
     * Proper and thorough understanding of the concepts.
     * Short quizzes to evaluate students' understanding.
