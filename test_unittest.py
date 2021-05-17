@@ -8,30 +8,37 @@ import unittest
 import time
 from Project import models
 
-
-test1_name="DEEPAKRAJ"
+# data for register successfull
+test1_name="DEEPAK123"
 test1_email="deepakraj@gmail.com"
 test1_password="Welcome@1234"
 test1_rpassword="Welcome@1234"
 
+# data for user already exist
 
-test2_name="DEEPAK"
-test2_email="deepakraj@gmail.com"
+test2_name="DEEPAKRAJ"
+test2_email="deepak@gmail.com"
 test2_password="Welcome@1234"
 test2_rpassword="Welcome@1234"
 
+# data for password mismatch 
 
 test3_name="DEEPAK"
 test3_email="deepak@gmail.com"
 test3_password="Welcome@1234"
 test3_rpassword="Welcome@12"
 
+# data for correct login
+ 
+test4_name="DEEPAKRAJ"
+test4_password="Welcome@1234"
 
-test4_name="RAJ"
-test4_password="May@1234"
+# data for invalid user
 
 test5_name="ABCD"
 test5_password="AAAA"
+
+# data for  wrong password
 
 
 test6_name="DEEPAKRAJ"
@@ -86,6 +93,12 @@ class UserRegistration(TestSetup):
 
         except Exception as e:
             print(traceback.format_exc())
+
+        finally:
+            user = models.users.query.filter_by(username=test1_name).first()
+            if user is not None:
+                models.db.session.delete(user)
+                models.db.session.commit()
 
         
 

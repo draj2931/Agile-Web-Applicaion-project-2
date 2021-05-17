@@ -7,7 +7,8 @@ Admin - page
 
 {% endblock %}
 {% block icon %}
-<img src="{{ url_for('static',filename='/images/signup.png') }}" alt="Image" style="width:50px;height:50px; margin-top:-20px" class="img-fluid">
+<img src="{{ url_for('static',filename='/images/signup.png') }}" alt="Image"
+    style="width:50px;height:50px; margin-top:-20px" class="img-fluid">
 
 {%endblock%}
 
@@ -28,19 +29,9 @@ Admin - page
 
 {% block content %}
 
-<div class="stats" style="margin-top:5%;margin-left:8%;text-align:center;">
+<div class="stats" style="margin-top:5%;text-align:center;">
 
-<h2> Total users : <span style="color:darkgoldenrod">{{count}}</span></h2>
-
-<h4> Total Number of users scored above 50:<span  style="color:coral;text-align: justify;">{{val1}}</span></h4>
-
-<h4> Total Number of users scored above 70:<span  style="color:coral;text-align: justify;">{{val2}}</span></h4>
-
-<h4> Total Number of users scored above 90:<span style="color:coral;text-align: justify;">{{val3}}</span></h4>
-
-<h4> Total Number of users scored got 100:<span  style="color:coral;text-align: justify;">{{val4}}</span></h4>
- 
-{% endblock %}
+    <h2> Total users : <span style="color:darkgoldenrod">{{count}}</span></h2>
 
 </div>
 
@@ -48,3 +39,81 @@ Admin - page
 
 
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"> # </th>
+            <th scope="col">Number of Users</th>
+            <th scope="col">Score</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>No of users Scored 100</td>
+            <td>{{val1}}</td>
+
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+
+            <td>No of users scoreed more than 90</td>
+            <td>{{val2}}</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>No of users scroed more than 70</td>
+            <td>{{val3}}</td>
+
+        </tr>
+
+        <tr>
+            <th scope="row">4</th>
+            <td>No of users scroed more than 50</td>
+            <td>{{val4}}</td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="stats" style="margin-top:5%;text-align:center;">
+
+    <h2> Total users Completed course : <span style="color:darkgoldenrod">{{completed}}</span></h2>
+
+</div>
+
+<div class="stats" style="margin-top:5%;text-align:center;">
+
+    <h2> Question Review</h2>
+
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"> # </th>
+            <th scope="col">Questions</th>
+            <th scope="col">Answers</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for i in range(0,len)%}
+        <tr>
+            <th scope="row">{{i}}</th>
+            <td>{{ques[i].question}}</td>
+            <td>{{ques[i].Answers}}</td>
+        </tr>
+
+
+        {% endfor %}
+
+        </tbody>
+        </table>
+
+
+        {% endblock %}

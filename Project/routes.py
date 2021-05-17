@@ -70,7 +70,7 @@ def register():
             if npwd == ncpwd:
                 #checking all the registered users
                 register_user = models.users.query.filter_by(
-                    username=nusr, emailid=email).first()
+                    username=nusr).first()
                 if(register_user is None):
                     # If user doesnt exist add to DB
                     usrdetail = models.users(
@@ -109,13 +109,17 @@ def admin():
 
     result = models.result_table.query.all()
 
+    progress_val= models.progress_tracker.query.all()
+    questions=models.question_table.query.all()
+
     #retriving the details from the db to admin page
 
-    if(users is not None and result is not None):
+    if(users is not None and result is not None and progress_val is not None):
         above_50 = 0
         above_70 = 0
         above_90 = 0
         total_100 = 0
+        count1=0
         for i in range(0, len(result)):
             val = result[i].overall
             if(int(val) > 50):
@@ -127,12 +131,21 @@ def admin():
             if(int(val) == 100):
                 total_100 = total_100+1
 
+        for j in range(0,len(progress_val)):
+            ans= progress_val[j].progress
+            ans=int(ans)
+            
+            
+            if(ans == 100):
+                count1= count1+1
+            
         total_user = len(users)
+        length=len(questions)
 
     else:
         return redirect(url_for('error'))
 
-    return render_template('admin.html', admin="admin", count=total_user, val1=above_50, val2=above_70, val3=above_90, val4=total_100)
+    return render_template('admin.html',len=length,ques=questions,completed=count1, admin="admin", count=total_user, val1=above_50, val2=above_70, val3=above_90, val4=total_100)
 
 
 # Error landing page
