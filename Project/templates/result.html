@@ -1,4 +1,4 @@
-<!-- vignesh chages -->
+
 {% extends 'base.html' %}
 {% block heading %}
 <li class="nav-item active">
@@ -7,6 +7,13 @@
   </div>
 </li>
 {% endblock %}
+
+{% block progress %}
+
+  <a class="nav-link" style="color:white;font-size:20px;">Progress:{{progress}}</a>
+
+{% endblock %}
+
 {% block icon %}
 <img src="{{ url_for('static',filename='/images/signup.png') }}" alt="Image"
   style="width:50px;height:50px; margin-top:-20px" class="img-fluid">
@@ -41,7 +48,7 @@
 
 </script>
 <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
-</div>
+
 <div class="row col-12 offset-5">
   <h3 class="h3 text-info">Results of {{user}}</h3>
 </div>
@@ -80,23 +87,47 @@
       </div>
     </div>
   </div>
-  <div class="col-6" style="margin-top:15%;margin-left:7%">
-    <div class="card text-center" style=" height: 350px;width:1200px;margin-left:8%;">
+  <div class="col-6" style="margin-top:15%;margin-left:7%;text-align: justify; ">
+    <div class="card text-center" style=" height:auto;width:1200px;margin-left:8%;">
       <div class="card-header">
-        <h4 class="h4 text-success">FeedBack</h4>
+        <h4 class="h4 text-success"> Feedback on Assesment</h4>
       </div>
-      <div class="card-body">
+    
 
-        <p class="card-text">Please, add the FeedBack Accordingly</p>
+      <div class="card-body">
+        
+        <h5 class="h5 text-info">Basics <p style="color: black; text-align: center;">{{feed1}}</p></h5>
         <div class="ratings">
           <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <style>
-            .checked {
-              color: orange;
-            }
-          </style>
+        </div>
+      </div>
+      
 
+      <div class="card-body">
+        
+        <h5 class="h5 text-success">Priciples <p style="color: black; text-align: center;">{{feed2}}</p></h5>
+        <div class="ratings">
+          <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        </div>
+      </div>
+
+      <div class="card-body">
+        
+        <h5 class="h5 text-primary">Uses <p style="color: black; text-align: center;">{{feed3}}</p></h5>
+        <div class="ratings">
+          <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        </div>
+      </div>
+
+      <div class="card-body">
+        
+        <h5 class="h5 text-success">Overall <p style="color: black; text-align: center;">{{gen}}</p></h5>
+        <div class="ratings">
+          <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         </div>
       </div>
 
@@ -104,6 +135,9 @@
 
   </div>
 </div>
+
+<a href="/users" class="btn btn-primary"
+  style="right:42%;margin-bottom:10%;position:absolute;">Back to Home page</a>
 
 
 

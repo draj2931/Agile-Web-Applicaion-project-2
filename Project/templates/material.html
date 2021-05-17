@@ -7,6 +7,12 @@
   </div>
 </li>
 {% endblock %}
+{% block progress %}
+
+  <a class="nav-link" style="color:white;font-size:20px;">Progress:{{progress}}</a>
+
+{% endblock %}
+
 {% block icon %}
 <img src="{{ url_for('static',filename='/images/signup.png') }}" alt="Image"
   style="width:50px;height:50px; margin-top:-20px" class="img-fluid">
@@ -125,13 +131,20 @@
 
               <button class="button" style="position: absolute;bottom: 15%;left: 38%;">
 
-                <a href="#tab2" data-toggle="tab"><span style="color:white;width:300px"> Start Learning </span></a>
+                <a href="#tab2" data-toggle="tab"><span style="color:white;width:300px"> {{button}}</span></a>
               </button>
 
 
 
 
+            
+            
+            
+           
             </div>
+
+
+
 
 
             <div class="tab-pane fade show " style="margin-left:20%" id="tab2">
@@ -141,18 +154,10 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
 
-
-
-              <!-- <label class="switch" style="right:25%;bottom:10%;position:absolute;">
-                  <input type="checkbox" value=2 id="2"> Completed
-                  <span class="slider round"></span>
-                 
-                </label> -->
-
               <a href="#tab3" data-toggle="tab" class="btn btn-primary"
                 style="right:10%;bottom:10%;position:absolute;">NEXT</a>
 
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page1" name="page" value="1">
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page1" name="page" value="1">
                 <label>Save Progress</label>
               </button>
 
@@ -204,7 +209,7 @@
               <a href="#tab4" data-toggle="tab" class="btn btn-primary"
                 style="right:10%;bottom:10%;position:absolute;">NEXT</a>
 
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page2" name="page" value="2">
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page2" name="page" value="2">
                 <label>Save Progress</label>
               </button>
               <!-- <br> <input type="submit" id="completed" name="completed" value="2">Save progress -->
@@ -249,7 +254,7 @@
               <a href="#tab5" data-toggle="tab" class="btn btn-primary"
                 style="right:10%;bottom:10%;position:absolute;">NEXT</a>
 
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page3" name="page" value="3">
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page3" name="page" value="3">
                 <label>Save Progress</label>
               </button>
 
@@ -296,7 +301,7 @@
                 style="right:10%;bottom:10%;position:absolute;">NEXT</a>
               <!-- <br> <input type="submit" name="completed" value="4">Save progress -->
 
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page4" name="page" value="4">
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page4" name="page" value="4">
                 <label>Save Progress</label>
               </button>
 
@@ -333,8 +338,7 @@
 
               <a href="#tab7" data-toggle="tab" class="btn btn-primary"
                 style="right:10%;bottom:10%;position:absolute;">NEXT</a>
-              <!-- <br> <input type="submit" name="completed" value="5">Save progress -->
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page5" name="page" value="5">
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page5" name="page" value="5">
                 <label>Save Progress</label>
               </button>
 
@@ -367,11 +371,16 @@
               </div>
               </p>
 
+              <div class="image2">
+                <img class="img-responsive" src="../static/images/advantage.png" alt="Agile Methodology"
+                  style="margin-left:63%;margin-top:-40%;width:400px;height:250px;"> </a>
+              </div>
+
 
               <a href="#tab8" data-toggle="tab" class="btn btn-primary"
                 style="right:10%;bottom:10%;position:absolute;">NEXT</a>
 
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page6" name="page" value="6">
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page6" name="page" value="6">
                 <label>Save Progress</label>
               </button>
             </div>
@@ -403,7 +412,7 @@
 
               <a href="#tab9" data-toggle="tab" class="btn btn-primary"
                 style="right:10%;bottom:10%;position:absolute;">NEXT</a>
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page7" name="page" value="7">
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page7" name="page" value="7">
                 <label>Save Progress</label>
               </button>
 
@@ -427,7 +436,7 @@
               <a href="#tab10" data-toggle="tab" class="btn btn-primary"
                 style="right:10%;bottom:10%;position:absolute;">NEXT</a>
 
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page8" name="page" value="8">
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page8" name="page" value="8">
                 <label>Save Progress</label>
               </button>
 
@@ -480,7 +489,12 @@
 
               </p>
 
-              <button type="submit" style="right:18%;bottom:9%;position:absolute;" id="page9" name="page" value="9">
+              <div class="image2">
+                <img class="img-responsive" src="../static/images/agile7.png" alt="Agile Methodology"
+                  style="margin-left:70%;margin-top:-40%;width:400px;height:250px;"> </a>
+              </div>
+
+              <button type="submit" style="right:18%;bottom:10%;position:absolute;background-color: #027bfe;color:white" id="page9" name="page" value="9">
                 <label>Save Progress</label>
               </button>
 
@@ -493,12 +507,7 @@
 
 
           </div>
-          <!--/.card-body -->
-
-
-
-          <!--/.card-->
-
+          
 
         </div>
 
@@ -512,7 +521,7 @@
 
 </div>
 
-{{msg}}
+
 
 {%endblock%}
 

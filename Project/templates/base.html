@@ -41,7 +41,11 @@
               {%endblock %}
                 
             </ul>
+            {% block progress %}
 
+              
+
+            {% endblock %}
 
             <ul class="navbar-nav">
                 
@@ -49,10 +53,13 @@
                 <a class="nav-link" href="/users"></a> {% block icon %} {% endblock %}</a>
             </li>
 
+
             {% block username %}  {% endblock %}
 
             {% block login %} {% endblock %}
             {% block register %} {% endblock %}
+
+          
         
 
                 

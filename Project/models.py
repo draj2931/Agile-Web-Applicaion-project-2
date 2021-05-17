@@ -24,7 +24,6 @@ class question_table(db.Model):
 
 class evaluation_table(db.Model):
     evalid=db.Column(db.Integer,primary_key=True)
-    user_id=db.Column(db.Integer,unique=True)
     username=db.Column(db.String(100),nullable=False)
     question1=db.Column(db.String(100),nullable=False)
     question2=db.Column(db.String(100),nullable=False)
@@ -40,7 +39,6 @@ class evaluation_table(db.Model):
 
 class progress_tracker(db.Model):
     progress_id=db.Column(db.Integer,primary_key=True)
-    user_id=db.Column(db.Integer,unique=True)
     username=db.Column(db.String(100),nullable=False)
     progress=db.Column(db.String(100),nullable=False)
 
@@ -52,6 +50,15 @@ class result_table(db.Model):
     category2=db.Column(db.Integer,nullable=False)
     category3=db.Column(db.Integer,nullable=False)
     overall=db.Column(db.Integer,nullable=False)
+
+class feedback_table(db.Model):
+    feedback_id=db.Column(db.Integer,primary_key=True)
+    score=db.Column(db.Integer,nullable=False)
+    feedback_1=db.Column(db.String(500),nullable=False)
+    feedback_2=db.Column(db.String(500),nullable=False)
+    feedback_3=db.Column(db.String(500),nullable=False)
+    overall_feedback=db.Column(db.String(500),nullable=False)
+    
 
 
     

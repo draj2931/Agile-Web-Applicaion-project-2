@@ -101,10 +101,8 @@ def material():
         usrname = session.get('user', None)
         usrid = session.get('user_id', None)
 
-        print(usrname)
-
         message = None
-        prog = None
+        prog = 0
         if request.method == "POST":
 
             prog = request.form['page']
@@ -114,14 +112,13 @@ def material():
             progress_val = models.progress_tracker(
                 username=usrname, progress=prog)
             existing_users = models.progress_tracker.query.filter_by(
-                user_id=usrid).first()
+                username=usrname).first()
 
             if existing_users is None:
 
                 models.db.session.add(progress_val)
                 models.db.session.commit()
                 message = "Progress saved"
-                return render_template('material.html', username=usrname, msg=message, progres=prog)
 
             elif int(existing_users.progress) < int(prog):
 
@@ -130,13 +127,25 @@ def material():
                 models.db.session.add(progress_val)
                 models.db.session.commit()
                 message = "Progress Saved"
-                return render_template('material.html', username=usrname, msg=message, progres=prog)
+
             else:
                 pass
 
-        return render_template('material.html', username=usrname, msg=message, progres=prog)
+        value = models.progress_tracker.query.filter_by(
+            username=usrname).first()
+
+        if(value is not None):
+            prog = value.progress
+            session['progress'] = prog
+
+            btn = "Completed"
+
+        else:
+            btn = "Start Learning"
+
+        return render_template('material.html', username=usrname, msg=message, progress=prog, button=btn)
     except:
-        return "error"
+        return redirect(url_for('login'))
 
 
 @app.route('/questions/<string:id>', methods=["POST", "GET"])
@@ -144,6 +153,8 @@ def questions(id):
 
     try:
         values = models.question_table.query.all()
+
+        prog = session.get('progress', None)
 
         if request.method == "POST":
 
@@ -254,10 +265,10 @@ def questions(id):
 
             return redirect(url_for('result'))
 
-        return render_template('questions.html', len=len(values), items=values, username=id)
+        return render_template('questions.html', progress=prog, len=len(values), items=values, username=id)
 
     except:
-        return "ERROR"
+        return redirect(url_for('result'))
 
 
 @app.route('/result')
@@ -267,6 +278,46 @@ def result():
     cat2 = session.get('cat2', None)
     cat3 = session.get('cat3', None)
     overall = session.get('overall', None)
+    total = session.get('overall', None)
     name = session.get('name', None)
+    cat1_feedback = None
+    cat2_feedback = None
+    cat3_feedback = None
+    general_feedback = None
 
-    return render_template("result.html", scores=overall, user=name, val1=cat1, val2=cat2, val3=cat3)
+    feedback1 = models.feedback_table.query.filter_by(score=cat1).first()
+    feedback2 = models.feedback_table.query.filter_by(score=cat2).first()
+    feedback3 = models.feedback_table.query.filter_by(score=cat3).first()
+
+    if(int(overall) > 75):
+        overall = 100
+    elif(int(overall) >= 50 and int(overall) <= 75):
+        overall = 50
+    elif(int(overall)>0):
+        overall = 25
+    else:
+        overall=0
+
+    print(total)
+
+    if(int(total) == 100):
+        ex_user = models.progress_tracker.query.filter_by(
+            username=name).first()
+        progress = models.progress_tracker(username=name, progress=100)
+
+        models.db.session.delete(ex_user)
+        models.db.session.add(progress)
+        models.db.session.commit()
+
+    value = models.progress_tracker.query.filter_by(username=name).first()
+
+    prog = value.progress
+
+    gen_feedback = models.feedback_table.query.filter_by(score=overall).first()
+
+    cat1_feedback = feedback1.feedback_1
+    cat2_feedback = feedback2.feedback_2
+    cat3_feedback = feedback3.feedback_3
+    general_feedback = gen_feedback.overall_feedback
+
+    return render_template("result.html", scores=total, progress=prog, user=name, val1=cat1, val2=cat2, val3=cat3, feed1=cat1_feedback, feed2=cat2_feedback, feed3=cat3_feedback, gen=general_feedback)
