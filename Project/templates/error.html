@@ -1,11 +1,15 @@
 {% extends 'base.html' %} 
+{% block title %}
+
+Error- page
+
+{% endblock %}
+
  {% block content %}
 
+<h4> Opps !!!! SOMETHING WENT WRONG !!! Please Login to the application </h4>
 
-<body onload="myfunction()">
-
-    
-</body>
+<a href="/">Log in</a>
 
  {% endblock %}
 
@@ -15,14 +19,7 @@
 
 
 
-<script> 
-function myfunction() {
 
-  alert("Invalid user login");
-  
-  
 
-}
 
-</script>
  {%endblock%}

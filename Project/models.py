@@ -58,20 +58,6 @@ class feedback_table(db.Model):
     feedback_2=db.Column(db.String(500),nullable=False)
     feedback_3=db.Column(db.String(500),nullable=False)
     overall_feedback=db.Column(db.String(500),nullable=False)
-    
-
-
-    
-
-
-    
-
-
-
-    
-
-
-
 
 
 
@@ -79,6 +65,23 @@ class feedback_table(db.Model):
 
 
     
-# add pictures
+
+
+    
+
+
+
+    
+
+
+
+
+
+
+    
+
+
+    
+
 
 

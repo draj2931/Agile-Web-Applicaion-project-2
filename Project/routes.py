@@ -1,8 +1,7 @@
 from flask.globals import session
 from Project import app
-from flask import render_template, request, flash, redirect, url_for, jsonify, make_response
+from flask import render_template, request, redirect, url_for
 from Project import models
-import sqlite3
 
 
 @app.route('/')
@@ -11,6 +10,7 @@ def index():
 
 
 @app.route('/login', methods=['POST', 'GET'])
+# Login function to check the entered username and password is valid or not and navigate to user's page
 def login():
 
     try:
@@ -20,46 +20,59 @@ def login():
             usr = request.form['username']
             pwd = request.form['password']
 
+            # selecting all the users
+
             attempted_user = models.users.query.filter_by(
                 username=usr) .first()
 
-            user = None
-            user_id = None
+            # checking the user in the Database or not
+
             if attempted_user is None:
 
-                error = "User not exists please register !!!"
+                if usr == "admin" and pwd == "admin@123":
+                    return redirect(url_for('admin'))
 
+                error = "User not exists please register !!!"
+            # Checking the valid user and password
             elif attempted_user.username == usr and attempted_user.password == pwd:
 
                 session['user'] = attempted_user.username
                 session['user_id'] = attempted_user.user_id
 
                 return redirect(url_for('users'))
+
+            #Invalid user
             else:
                 error = "Username or password is wrong"
 
         return render_template('login.html', error=error)
     except:
-        return "ERROR"
+        #redirrecting in case of error
+        return redirect(url_for('error'))
 
 
 @app.route('/register', methods=["POST", "GET"])
+# Register function to register new user and check the user already exits or not also checks validations for passwords
 def register():
     try:
+
         error = None
 
         if request.method == "POST":
-            print(1)
+
+            # Passing the input values from the form
+
             nusr = request.form['newusername']
             npwd = request.form['newpassword']
             ncpwd = request.form['re_password']
             email = request.form['email']
-
+            # checking the password and confirm password
             if npwd == ncpwd:
-
+                #checking all the registered users
                 register_user = models.users.query.filter_by(
-                    emailid=email).first()
+                    username=nusr, emailid=email).first()
                 if(register_user is None):
+                    # If user doesnt exist add to DB
                     usrdetail = models.users(
                         username=nusr, emailid=email, password=npwd, confirm_password=ncpwd)
                     models.db.session.add(usrdetail)
@@ -67,14 +80,18 @@ def register():
                     return redirect(url_for('login'))
 
                 else:
+                    # Existing Users
                     error = 'User/email id already existing'
 
             else:
+                # Password mismatch
                 error = "Password mismatching"
 
         return render_template('register.html', error=error)
     except:
-        return "error"
+        return redirect(url_for('error'))
+
+# User landing page
 
 
 @app.route('/users')
@@ -84,43 +101,77 @@ def users():
     return render_template('user.html', usrname=username)
 
 
+# Admin landing page
+@app.route('/admin')
+def admin():
+
+    users = models.users.query.all()
+
+    result = models.result_table.query.all()
+
+    #retriving the details from the db to admin page
+
+    if(users is not None and result is not None):
+        above_50 = 0
+        above_70 = 0
+        above_90 = 0
+        total_100 = 0
+        for i in range(0, len(result)):
+            val = result[i].overall
+            if(int(val) > 50):
+                above_50 = above_50+1
+            if(int(val) > 70):
+                above_70 = above_70+1
+            if(int(val) > 90):
+                above_90 = above_90+1
+            if(int(val) == 100):
+                total_100 = total_100+1
+
+        total_user = len(users)
+
+    else:
+        return redirect(url_for('error'))
+
+    return render_template('admin.html', admin="admin", count=total_user, val1=above_50, val2=above_70, val3=above_90, val4=total_100)
+
+
+# Error landing page
 @app.route('/error')
 def error():
    return render_template('error.html')
 
-
-@app.route('/course')
-def course():
-    return render_template('course.html')
+# Material page is the content display page where the user navigates to diffrent content and save progress and navigating to assesment page
 
 
 @app.route('/material', methods=["POST", "GET"])
 def material():
 
     try:
-        usrname = session.get('user', None)
-        usrid = session.get('user_id', None)
-        btn="Start Learning"
-        message = None
-        progress1=0
-        
-        if request.method == "POST":
-            print("POST IN")
-            prog = request.form['page']
 
+        usrname = session.get('user', None)
+
+        btn = "Start Learning"
+        message = None
+        progress1 = 0
+
+        if request.method == "POST":
+            # saving the progress of the content in the course
+            prog = request.form['page']
             prog = int(prog)*10
+
 
             progress_val = models.progress_tracker(
                 username=usrname, progress=prog)
             existing_users = models.progress_tracker.query.filter_by(
                 username=usrname).first()
 
+            # for  new user progress is saved 
             if existing_users is None:
 
                 models.db.session.add(progress_val)
                 models.db.session.commit()
                 message = "Progress saved"
-
+            # for existing user progress is deleted and saved  only if the old progress is less than new value
             elif int(existing_users.progress) < int(prog):
 
                 models.db.session.delete(existing_users)
@@ -130,18 +181,20 @@ def material():
                 message = "Progress Saved"
 
             else:
+
                 pass
 
         value = models.progress_tracker.query.filter_by(
             username=usrname).first()
-        progress1= value.progress
+        # If the user has completed the quiz with 100% then the content is marked as completed
+        progress1 = value.progress
         if(value is not None):
-            progress1= value.progress
+            progress1 = value.progress
             session['progress'] = progress1
-            if(int(progress1)==100):
+            if(int(progress1) == 100):
                 btn = "Completed"
-            elif(int(progress1)>0):
-                btn="Continue Learning"
+            elif(int(progress1) > 0):
+                btn = "Continue Learning"
 
         else:
             btn = "Start Learning"
@@ -151,6 +204,7 @@ def material():
 
         return render_template('material.html', username=usrname, msg=message, progress=progress1, button=btn)
 
+# Question page for the assessments where question are retrived from DB and evaluated
 
 @app.route('/questions/<string:id>', methods=["POST", "GET"])
 def questions(id):
@@ -161,30 +215,31 @@ def questions(id):
         prog = session.get('progress', None)
 
         if request.method == "POST":
-
+            # retriving the selected values
             answer1 = request.form["0"]
-
             answer2 = request.form["1"]
             answer3 = request.form["2"]
             answer4 = request.form["3"]
             answer5 = request.form["4"]
-            answer6 = request.form["5"]
-
+            answer6 = request.form["5"] 
             answer7 = request.form["6"]
             answer8 = request.form["7"]
             answer9 = request.form["8"]
             answer10 = request.form["9"]
 
-            answer5 = request.form["4"]
+          
 
             save_answers = models.evaluation_table(username=id, question1=answer1, question2=answer2, question3=answer3, question4=answer4,
                                                    question5=answer5, question6=answer6, question7=answer7, question8=answer8, question9=answer9, question10=answer10)
             existing_users = models.evaluation_table.query.filter_by(
                 username=id).first()
+            # if user is giving quiz for first time
+            
             if existing_users is None:
 
                 models.db.session.add(save_answers)
                 models.db.session.commit()
+            # if the user has already given the quiz
 
             else:
                 models.db.session.delete(existing_users)
@@ -194,11 +249,14 @@ def questions(id):
 
             answers = models.evaluation_table.query.filter_by(
                 username=id).first()
+            
+            # Retriving the correct answers from the database
             crt_answers = models.question_table.query.all()
             point = 0
             cat1 = 0
             cat2 = 0
             cat3 = 0
+            # adding the score for each category
 
             if(answers.question1 == crt_answers[0].Answers):
                 point = point+1
@@ -250,6 +308,8 @@ def questions(id):
             current_user = models.result_table.query.filter_by(
                 username=id).first()
 
+            # adding the marks to the database
+
             if current_user is None:
 
                 models.db.session.add(save_marks)
@@ -272,9 +332,9 @@ def questions(id):
         return render_template('questions.html', progress=prog, len=len(values), items=values, username=id)
 
     except:
-        return redirect(url_for('result'))
+        return redirect(url_for('error'))
 
-
+# Displaying the result from the questions and retriving feedback from database
 @app.route('/result')
 def result():
 
@@ -289,19 +349,21 @@ def result():
     cat3_feedback = None
     general_feedback = None
 
+    # selecting feedback from database
     feedback1 = models.feedback_table.query.filter_by(score=cat1).first()
     feedback2 = models.feedback_table.query.filter_by(score=cat2).first()
     feedback3 = models.feedback_table.query.filter_by(score=cat3).first()
+
+    # categorizing the answers
 
     if(int(overall) > 75):
         overall = 100
     elif(int(overall) >= 50 and int(overall) <= 75):
         overall = 50
-    elif(int(overall)>0):
+    elif(int(overall) > 0):
         overall = 25
     else:
-        overall=0
-
+        overall = 0
 
     if(int(total) == 100):
         ex_user = models.progress_tracker.query.filter_by(

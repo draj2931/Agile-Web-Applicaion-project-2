@@ -1,0 +1,50 @@
+<!-- template inheritance -->
+
+{% extends 'base.html' %}
+{% block title %}
+
+Admin - page
+
+{% endblock %}
+{% block icon %}
+<img src="{{ url_for('static',filename='/images/signup.png') }}" alt="Image" style="width:50px;height:50px; margin-top:-20px" class="img-fluid">
+
+{%endblock%}
+
+
+{% block username %}
+<li class="nav-item">
+    <a class="nav-link" id="username">{{admin}}</a>
+</li>
+{% endblock%}
+
+
+{% block login %}
+<li class="nav-item">
+    <a class="nav-link" href="/">Logout</a>
+</li>
+{% endblock%}
+
+
+{% block content %}
+
+<div class="stats" style="margin-top:5%;margin-left:8%;text-align:center;">
+
+<h2> Total users : <span style="color:darkgoldenrod">{{count}}</span></h2>
+
+<h4> Total Number of users scored above 50:<span  style="color:coral;text-align: justify;">{{val1}}</span></h4>
+
+<h4> Total Number of users scored above 70:<span  style="color:coral;text-align: justify;">{{val2}}</span></h4>
+
+<h4> Total Number of users scored above 90:<span style="color:coral;text-align: justify;">{{val3}}</span></h4>
+
+<h4> Total Number of users scored got 100:<span  style="color:coral;text-align: justify;">{{val4}}</span></h4>
+ 
+{% endblock %}
+
+</div>
+
+
+
+
+

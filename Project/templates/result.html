@@ -1,5 +1,12 @@
 
 {% extends 'base.html' %}
+
+{% block title %}
+
+Feedback- page
+
+{% endblock %}
+
 {% block heading %}
 <li class="nav-item active">
   <div class="heading1" style="margin-left:310px; width:450px;">
@@ -139,7 +146,8 @@
 <a href="/users" class="btn btn-primary"
   style="right:42%;margin-bottom:10%;position:absolute;">Back to Home page</a>
 
-
+  <a href="/questions/{{user}}" class="btn btn-primary"
+  style="right:55%;margin-bottom:10%;position:absolute;">Retake Quiz</a>
 
 </div>
 

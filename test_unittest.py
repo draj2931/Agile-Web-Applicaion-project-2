@@ -27,8 +27,8 @@ test3_password="Welcome@1234"
 test3_rpassword="Welcome@12"
 
 
-test4_name="DEEPAKRAJ"
-test4_password="Welcome@1234"
+test4_name="RAJ"
+test4_password="May@1234"
 
 test5_name="ABCD"
 test5_password="AAAA"
@@ -173,7 +173,7 @@ class Login(TestSetup):
 
         value=self.driver.find_element_by_id("username").text
 
-        self.assertEqual(test1_name,value)
+        self.assertEqual(test4_name,value)
         print("Login-Sucessfull")
 
 
@@ -225,8 +225,7 @@ class Navigation(TestSetup):
 
     user_url= BASE_URL+ "/users"
     material_url=BASE_URL + "/material"
-    quiz_URL=BASE_URL + "/questions"
-
+    
     def test_navigation_users(self):
         self.driver.get(self.user_url)
         self.driver.find_element_by_id("agile").click()
@@ -236,15 +235,7 @@ class Navigation(TestSetup):
         value=self.driver.find_element_by_id("title1").text
         self.assertEqual("AGILE METHODOLOGY",value)
         print("Successfully  Navigated to Content Page")
-    def test_navigation_quiz(self):
-        self.driver.get(self.user_url)
-        self.driver.find_element_by_id("quiz").click()
-
-        assert self.material_url in self.driver.current_url
-
-        value=self.driver.find_element_by_id("title2").text
-        self.assertEqual("AGILE METHODOLOGY - ASSESMENT",value)
-        print("Successfully Navigated to Question Page")
+   
 
 if __name__ =="__main__":
      with warnings.catch_warnings():

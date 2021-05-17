@@ -1,5 +1,12 @@
-<!-- vignesh chages -->
+
 {% extends 'base.html' %}
+
+{% block title %}
+
+Content - page
+
+{% endblock %}
+
 {% block heading %}
 <li class="nav-item active">
   <div class="heading1" style="margin-left:310px; width:450px;">
@@ -126,7 +133,7 @@
 
               <button class="button" style="position: absolute;bottom: 15%;left: 38%;">
 
-                <a href="#tab2" data-toggle="tab"><span style="color:white;width:300px"> {{button}}</span></a>
+                <a href="#tab2" id="start-button" data-toggle="tab"><span style="color:white;width:300px"> {{button}}</span></a>
               </button>
 
 
@@ -493,7 +500,7 @@
                 <label>Save Progress</label>
               </button>
 
-              <a href="/questions/{{username}}" class="btn btn-primary" id="quiz"
+              <a href="/questions/{{username}}" class="btn btn-primary" id="quiz-button"
                 style="right:10%;bottom:10%;position:absolute;">Take Quiz</a>
 
 
