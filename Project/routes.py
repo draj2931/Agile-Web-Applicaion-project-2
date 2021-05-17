@@ -70,7 +70,7 @@ def register():
                     error = 'User/email id already existing'
 
             else:
-                error = "Passwork mismatching"
+                error = "Password mismatching"
 
         return render_template('register.html', error=error)
     except:
@@ -100,11 +100,12 @@ def material():
     try:
         usrname = session.get('user', None)
         usrid = session.get('user_id', None)
-
+        btn="Start Learning"
         message = None
-        prog = 0
+        progress1=0
+        
         if request.method == "POST":
-
+            print("POST IN")
             prog = request.form['page']
 
             prog = int(prog)*10
@@ -133,19 +134,22 @@ def material():
 
         value = models.progress_tracker.query.filter_by(
             username=usrname).first()
-
+        progress1= value.progress
         if(value is not None):
-            prog = value.progress
-            session['progress'] = prog
-
-            btn = "Completed"
+            progress1= value.progress
+            session['progress'] = progress1
+            if(int(progress1)==100):
+                btn = "Completed"
+            elif(int(progress1)>0):
+                btn="Continue Learning"
 
         else:
             btn = "Start Learning"
 
-        return render_template('material.html', username=usrname, msg=message, progress=prog, button=btn)
+        return render_template('material.html', username=usrname, msg=message, progress=progress1, button=btn)
     except:
-        return redirect(url_for('login'))
+
+        return render_template('material.html', username=usrname, msg=message, progress=progress1, button=btn)
 
 
 @app.route('/questions/<string:id>', methods=["POST", "GET"])
@@ -298,7 +302,6 @@ def result():
     else:
         overall=0
 
-    print(total)
 
     if(int(total) == 100):
         ex_user = models.progress_tracker.query.filter_by(
